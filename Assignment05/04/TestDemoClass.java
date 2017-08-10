@@ -16,6 +16,7 @@ class DemoClass{
 	public DemoClass(String name, int id){
 		this.name=name;
 		this.id=id;
+		System.out.println("Name: "+name+"\tID: "+id);
 	}
 	
 	
@@ -32,14 +33,28 @@ public class TestDemoClass{
 			pTypes[i]=con[i].getParameterTypes();
 		
 		for(int i=0;i<pTypes.length;i++){
-			System.out.println("Length "+i+": "+pTypes[i].length+"\t"+pTypes[i]);
 			
 			if(pTypes[i].length==0){
-				Object obj=class_obj.newInstance();
+				Object o=class_obj.newInstance();
 			}
+			else{
 				
+				Object[] obj=new Object[pTypes[i].length];
+				
+				for(int j=0;j<pTypes[i].length;j++){
+
+					if(pTypes[i][j]==String.class)
+						obj[j]="ajay";
+					else if(pTypes[i][j]==int.class)
+						obj[j]=111;
+					
+				}
+
+				Object o=con[i].newInstance(obj);
+				
+			}	
 			
-			//Object[] o=new Object[pTypes[i].length];
+			
 			
 		}
 	}
