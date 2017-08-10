@@ -1,0 +1,26 @@
+package corejava.hospital;
+
+import java.util.*;
+import java.lang.reflect.*;
+
+public class Patient {
+
+	public static void main(String[] args) throws Exception {
+		Random rand = new Random();
+		for(int i=0;i<10;i++)
+			System.out.println(rand.nextInt(300)+10);
+		
+		int bp=rand.nextInt(300)+10;
+		
+		Class[] c =new Class[]{ InchargeA.class, InchargeB.class}; 
+		
+		for(int i=0;i<c.length;i++){
+			Method m = c[i].getMethod("notify", new Class[]{int.class});
+			Object result= m.invoke(c[i].newInstance(), new Object[]{bp});
+
+			
+		}
+		
+	}
+
+}

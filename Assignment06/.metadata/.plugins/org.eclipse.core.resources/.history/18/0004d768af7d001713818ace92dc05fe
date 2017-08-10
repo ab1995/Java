@@ -1,0 +1,22 @@
+package corejava.annotation;
+
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+import corejava.annotation.*;
+
+public class TestAnnotation {
+
+	public static void main(String[] args) throws Exception {
+		
+		Class obj = Employee.class;
+		
+		for (Method method : obj.getDeclaredMethods()) {
+			System.out.println(method.getName()+"\t"+method.isAnnotationPresent(Getter.class));
+			
+			if (method.isAnnotationPresent(Getter.class)){
+
+			}
+		}
+		
+	}
+}

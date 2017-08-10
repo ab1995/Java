@@ -38,8 +38,7 @@ class TestClass{
 			if(Modifier.toString(methods[i].getModifiers()).equals("private")){
 				methods[i].setAccessible(true);
 				System.out.println(methods[i].getName()+": "+methods[i].invoke(new SampleClass(), new Object[]{}));
-			}			
-			
+			}				
 		}
 
 	}

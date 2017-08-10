@@ -1,0 +1,28 @@
+package corejava.nestedclass;
+
+import java.util.*;
+import java.sql.Timestamp;
+
+public class SampleClass {
+	
+	private class Cache{
+		HashMap<Integer, Timestamp> cache=new HashMap<Integer, Timestamp>();
+	}
+
+	private int id;
+	
+	public SampleClass(int id){
+		this.id=id;
+	}
+	
+	public int getId(){
+		return this.id;
+	}
+	
+	public void setId(int id){
+		this.id=id;
+		
+	}
+	
+	
+}
