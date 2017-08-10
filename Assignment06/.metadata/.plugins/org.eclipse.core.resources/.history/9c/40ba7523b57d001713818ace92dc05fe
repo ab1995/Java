@@ -1,9 +1,0 @@
-package corejava.enums;
-
-public class Order {
-	private int orderId;
-	private String name;
-	private Status status;
-
-
-}

@@ -1,5 +1,0 @@
-package corejava.annotation;
-
-public @interface Getter {
-
-}
