@@ -1,0 +1,6 @@
+package corejava.exception.resource;
+
+
+public class Sample implements AutoCloseable {
+
+}

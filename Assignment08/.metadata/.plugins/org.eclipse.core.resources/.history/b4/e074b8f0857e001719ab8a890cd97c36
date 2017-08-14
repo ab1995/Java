@@ -1,0 +1,15 @@
+package corejava.threading.watertank;
+
+public class WaterTank implements Runnable {
+
+	@Override
+	public void run() {
+		
+		
+	}
+	
+	public static void main(){
+		
+	}
+
+}

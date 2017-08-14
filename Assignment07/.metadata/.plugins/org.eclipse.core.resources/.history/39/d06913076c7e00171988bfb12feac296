@@ -1,0 +1,5 @@
+package corejava.exception.custom;
+
+public class InsufficientBalanceException {
+
+}

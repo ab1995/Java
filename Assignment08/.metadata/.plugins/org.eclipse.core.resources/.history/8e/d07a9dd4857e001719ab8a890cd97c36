@@ -1,0 +1,5 @@
+package corejava.threading.watertank;
+
+public class WaterTank {
+
+}

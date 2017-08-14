@@ -1,0 +1,82 @@
+package corejava.threading.watertank;
+
+public class WaterTank implements Runnable {
+
+	private int currentWaterInTank;
+	private final int CAPACITY=1000;
+	private int capacityLimit;
+	private int inFlowRate;
+	private int outFlowRate;
+	private boolean isInSuspend;
+	
+	Thread t1, t2, t3;
+	
+	public WaterTank() {
+		this.isInSuspend=false;
+		this.currentWaterInTank=500;
+		this.capacityLimit=800;
+		this.inFlowRate=50;
+		this.outFlowRate=70;
+		
+		t1=new Thread(this);
+		t1.setName("IN");
+		t2=new Thread(this);
+		t2.setName("OUT");
+		t3=new Thread(this);
+		t3.setName("CONTROLLER");
+		t3.setDaemon(true);
+	}
+	
+	@Override
+	public void run() {
+		
+		Thread currThread=Thread.currentThread();
+		
+		if(currThread.getName().equals("IN")){
+			
+			while(true){
+				
+				if(!this.isInSuspend)
+				{
+					currThread.resume();
+					this.currentWaterInTank+=this.inFlowRate;
+				}
+				else
+					currThread.suspend();
+				try{Thread.sleep(100);}catch(Exception e){}
+			}
+
+		}
+		else if(currThread.getName().equals("OUT")){
+			while(true){
+				if(this.isInSuspend)
+				{
+					currThread.resume();
+					this.currentWaterInTank-=this.outFlowRate;
+				}
+				else
+					currThread.suspend();
+				try{Thread.sleep(100);}catch(Exception e){}		
+			}
+		}
+		
+		else if(currThread.getName().equals("CONTROLLER")){
+			if(this.currentWaterInTank>800)
+			{
+				System.out.println("Current Capacity: "+this.currentWaterInTank);
+				this.isInSuspend=true;
+			}
+			else
+			{
+				System.out.println("Current Capacity: "+this.currentWaterInTank);
+				this.isInSuspend=false;
+			}
+			try{Thread.sleep(100);}catch(Exception e){}
+		}
+	}
+	
+	public static void main(String args[]){
+		new WaterTank();
+	}
+
+}

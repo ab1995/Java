@@ -1,0 +1,40 @@
+package corejava.hospital;
+
+import java.util.Random;
+
+public class Hospital {
+	private BpListener[] obj=new BpListener[]{new InchargeA(), new InchargeB()};
+	
+	public static void checkBp(){
+		
+	}
+
+	public static void main(String[] args) throws Exception {
+		
+		
+		
+		
+		Patient p1=new Patient();
+		
+		Random rand = new Random();
+		for(int j=0;j<10;j++){
+			int bp=rand.nextInt(300)+10;
+			System.out.println("BP: "+bp);
+			
+			if(bp>140){	
+				InformListeners.informBpListeners(obj, bp);
+				
+				BpListener bpListener=new BpListener(){
+					public void notify(int bp){
+						System.out.println("Inform Doctor. BP:"+bp);
+					}
+				};
+				
+				bpListener.notify(bp);
+			}
+			
+		}
+		
+
+	}
+}

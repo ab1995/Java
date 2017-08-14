@@ -1,0 +1,28 @@
+package corejava.threading.demo;
+
+public class PingPongMain implements Runnable {
+
+	Thread t1, t2, t3;
+	
+	public PingPongMain() {
+		t1=new Thread(this);
+		t1.setName("PING");
+		t1.start();
+		t2=new Thread(this);
+		t2.setName("PONG");
+		t2.start();
+		t3=new Thread(this);
+		t3.setName("TONG");
+		t3.start();
+	}
+	@Override
+	public void run() {
+		
+		
+	}
+
+	public static void main(String args[]){
+		
+	}
+	
+}

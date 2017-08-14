@@ -1,0 +1,9 @@
+package corejava.exception.custom;
+
+import java.util.*;
+
+import org.omg.IOP.ExceptionDetailMessage;
+
+public class InsufficientBalanceException extends Exceptions {
+
+}

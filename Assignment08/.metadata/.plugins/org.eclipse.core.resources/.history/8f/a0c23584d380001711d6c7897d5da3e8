@@ -1,0 +1,160 @@
+package corejava.threading.ball;
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class OvalMovementTemplate extends Frame implements Runnable {
+
+	int y1 = 400, y2 = 400, y3 = 400;
+	Thread t1, t2, t3;
+	
+	static boolean reached=false;
+	ReentrantLock lock;
+	
+
+	public OvalMovementTemplate() {
+		
+		super("Oval Game");
+		lock=new ReentrantLock();
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		t1=new Thread(this);
+		t1.setName("RED");
+		t2=new Thread(new Thread(this));
+		t2.setName("GREEN");
+		t3=new Thread(new Thread(this));
+		t3.setName("BLUE");
+		
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+	
+	public void paint(Graphics g) {
+
+		g.setColor(Color.RED);
+		g.fillOval(100, y1, 50, 50);
+		g.setColor(Color.GREEN);
+		g.fillOval(200, y2, 50, 50);
+		g.setColor(Color.BLUE);
+		g.fillOval(300, y3, 50, 50);
+		
+	}
+	
+	public static void main(String args[]) {
+		Frame om = new OvalMovementTemplate();
+		om.setSize(600, 600);
+		om.setBackground(Color.CYAN);
+		om.setVisible(true);
+	}
+	
+	public synchronized void waitFunc(){
+			lock.lock();
+
+	}
+	
+	public synchronized void notifyFunc(){
+		lock.unlock();
+	}
+
+	@Override
+	public  void run() {
+		
+		Thread currThread=Thread.currentThread();
+		ReentrantLock l1=new ReentrantLock();
+		ReentrantLock l2=new ReentrantLock();
+		ReentrantLock l3=new ReentrantLock();
+	
+			if(currThread.getName().equals("RED")){
+				boolean upper=true;
+				while(true){
+					
+					if(upper){
+
+						
+						for( y1=400;y1>50;y1--)
+						{
+							this.repaint();
+							try{Thread.sleep(10);} catch(Exception e){}
+						}
+						upper=false;
+						System.out.println("demo");
+						this.waitFunc();
+					}
+					else {
+		
+						for( y1=50;y1<400;y1++)
+						{
+							this.repaint();
+							try{Thread.sleep(10);} catch(Exception e){}
+						}
+						upper=true;
+						this.waitFunc();
+					}
+	
+				}
+			}
+		
+			 if(currThread.getName().equals("GREEN")){
+				boolean upper=true;
+				while(true){
+					if(upper){
+					
+						for( y2=400;y2>50;y2--)
+						{
+							this.repaint();
+							try{Thread.sleep(20);} catch(Exception e){}
+						}
+						upper=false;
+						this.waitFunc();
+					}
+					else {
+						
+						for( y2=50;y2<400;y2++)
+						{
+							this.repaint();
+							try{Thread.sleep(20);} catch(Exception e){}
+						}
+						upper=true;
+						this.waitFunc();
+					}
+	
+				}
+			}
+			if(currThread.getName().equals("BLUE")){
+				boolean upper=true;
+				while(true){
+					if(upper){
+						
+						for( y3=400;y3>50;y3--)
+						{
+							this.repaint();
+							try{Thread.sleep(30);} catch(Exception e){}
+						}
+						upper=false;
+						this.reached=true;
+					}
+					else{
+						
+						for( y3=50;y3<400;y3++)
+						{
+							this.repaint();
+							try{Thread.sleep(30);} catch(Exception e){}
+						}
+						upper=true;
+						this.notifyFunc();
+					}
+	
+				}
+			}
+		
+		
+	}
+}

@@ -1,0 +1,23 @@
+package corejava.exception.demo;
+
+public class ExceptionDemo {
+
+	public static void main(String[] args) {
+	
+		try{
+			
+			int x=2/0;
+			
+		}
+		catch(ArithmeticException e){
+			e.printStackTrace();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			System.out.println("In finally");
+		}
+	}
+
+}

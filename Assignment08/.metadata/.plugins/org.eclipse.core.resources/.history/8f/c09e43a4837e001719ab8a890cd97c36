@@ -1,0 +1,73 @@
+package corejava.threading.ball;
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class OvalMovementTemplate extends Frame implements Runnable {
+
+	int y1 = 400, y2 = 400, y3 = 400;
+	Thread t1, t2, t3;
+	Graphics grap;
+	
+	public OvalMovementTemplate(Graphics g) {
+		
+		super("Oval Game");
+		this.grap=g;
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	}	
+	
+	public OvalMovementTemplate() {
+		
+		super("Oval Game");
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	}
+	
+	public void paint(Graphics g) {
+		this.grap=g;
+		t1=new Thread(new OvalMovementTemplate(g));
+		t1.setName("RED");
+		t2=new Thread(new Thread(new OvalMovementTemplate(g)));
+		t2.setName("GREEN");
+		t3=new Thread(new Thread(new OvalMovementTemplate(g)));
+		t3.setName("BLUE");
+		
+		t1.start();
+		g.setColor(Color.GREEN);
+		g.fillOval(200, y2, 50, 50);
+		g.setColor(Color.BLUE);
+		g.fillOval(300, y3, 50, 50);
+		this.repaint();
+	}
+	
+	public static void main(String args[]) {
+		Frame om = new OvalMovementTemplate();
+		om.setSize(600, 600);
+		om.setBackground(Color.CYAN);
+		om.setVisible(true);
+	}
+
+	@Override
+	public void run() {
+		
+		Thread currThread=Thread.currentThread();
+		if(currThread.getName().equals("RED")){
+			//while(true){
+				for( y1=400;y1>0;y1--)
+				{	
+					try{Thread.sleep(1000)} catch(Exception e){};
+					this.grap.setColor(Color.RED);
+					this.grap.fillOval(100, y1, 50, 50);
+				}
+			}
+		}
+	}
+}

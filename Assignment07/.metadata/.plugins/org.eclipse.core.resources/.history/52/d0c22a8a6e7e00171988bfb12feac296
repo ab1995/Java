@@ -1,0 +1,31 @@
+package corejava.exception.demo;
+
+public class ExceptionDemo {
+
+	public static void main(String[] args) {
+	
+		try{
+			
+			int x=2/0;
+			
+			try{
+				ExceptionDemo d=null;
+				
+			}
+			catch(ArithmeticException e){
+				System.out.println("Nested catch");
+			}
+			
+		}
+		catch(ArithmeticException e){
+			e.printStackTrace();
+		}
+		catch(Throwable e){
+			e.printStackTrace();
+		}
+		finally{
+			System.out.println("In finally");
+		}
+	}
+
+}

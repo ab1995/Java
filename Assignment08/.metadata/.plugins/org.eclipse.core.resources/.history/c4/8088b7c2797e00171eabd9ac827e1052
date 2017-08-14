@@ -1,0 +1,5 @@
+package corejava.threading.demo;
+
+public class PingPongMain {
+
+}

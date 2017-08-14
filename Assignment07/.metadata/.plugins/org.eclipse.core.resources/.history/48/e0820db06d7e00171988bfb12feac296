@@ -1,0 +1,7 @@
+package corejava.exception.resource;
+
+import java.util.*;
+
+public class Sample {
+
+}
