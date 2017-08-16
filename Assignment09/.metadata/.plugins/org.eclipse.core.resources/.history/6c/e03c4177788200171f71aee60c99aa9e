@@ -1,0 +1,32 @@
+package corejava.collections.parking;
+
+import java.util.*;
+
+public class ParkedCarOwenerList {
+
+	static HashSet<HashMap<String, HashSet<ParkedCarOwnerDetails>>> floorSet=new HashSet<>();
+	static HashMap<String, HashSet<ParkedCarOwnerDetails>> floorMap_1=new HashMap<>();
+	
+	public ParkedCarOwenerList(){
+		HashSet<ParkedCarOwnerDetails> temp=new HashSet<>();
+		floorMap_1.put("s1", temp);
+		floorMap_1.put("s2", temp);
+		floorMap_1.put("s3", temp);
+		floorMap_1.put("s4", temp);
+		
+		floorSet.add(e)
+	}
+	
+	public void addNewCar(ParkedCarOwnerDetails obj){
+		
+	}
+	
+	public void removeCar(){
+		
+	}
+	
+	public int getParkedCarLocation(int token){
+		
+		return 1;
+	}
+}

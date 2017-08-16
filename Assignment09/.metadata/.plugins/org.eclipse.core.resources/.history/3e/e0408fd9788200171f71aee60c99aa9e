@@ -1,0 +1,58 @@
+package corejava.collections.parking;
+
+import java.util.*;
+
+public class ParkedCarOwenerList {
+
+	static HashSet<HashMap<String, HashSet<ParkedCarOwnerDetails>>> floorSet=new HashSet<>();
+
+	
+	public ParkedCarOwenerList(){
+		HashSet<ParkedCarOwnerDetails> temp=new HashSet<>(20);
+		HashMap<String, HashSet<ParkedCarOwnerDetails>> floorMap_1=new HashMap<>();
+		HashMap<String, HashSet<ParkedCarOwnerDetails>> floorMap_2=new HashMap<>();
+		HashMap<String, HashSet<ParkedCarOwnerDetails>> floorMap_3=new HashMap<>();
+		HashMap<String, HashSet<ParkedCarOwnerDetails>> floorMap_4=new HashMap<>();
+		
+		floorMap_1.put("s1", temp);
+		floorMap_1.put("s2", temp);
+		floorMap_1.put("s3", temp);
+		floorMap_1.put("s4", temp);
+		floorSet.add(floorMap_1);
+		
+		floorMap_2.put("s1", temp);
+		floorMap_2.put("s2", temp);
+		floorMap_2.put("s3", temp);
+		floorMap_2.put("s4", temp);
+		floorSet.add(floorMap_2);
+		
+		floorMap_3.put("s1", temp);
+		floorMap_3.put("s2", temp);
+		floorMap_3.put("s3", temp);
+		floorMap_3.put("s4", temp);
+		floorSet.add(floorMap_3);
+		
+		floorMap_4.put("s1", temp);
+		floorMap_4.put("s2", temp);
+		floorMap_4.put("s3", temp);
+		floorMap_4.put("s4", temp);
+		floorSet.add(floorMap_4);
+		
+		
+		
+		
+	}
+	
+	public void addNewCar(ParkedCarOwnerDetails obj){
+		
+	}
+	
+	public void removeCar(){
+		
+	}
+	
+	public int getParkedCarLocation(int token){
+		
+		return 1;
+	}
+}

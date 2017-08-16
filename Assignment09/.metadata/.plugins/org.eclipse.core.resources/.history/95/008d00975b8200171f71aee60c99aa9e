@@ -1,0 +1,26 @@
+package corejava.collections.employee;
+
+import java.util.HashMap;
+
+class Date{
+	private int day;
+	private int month;
+	private int year;
+	
+	public Date(int day, int month, int year){
+		 this.day=day;
+		 this.month=month;
+		 this.year=year;
+	}
+}
+
+public class Employee {
+
+	public static void main(String[] args) {
+		HashMap<Date, String> emp=new HashMap<Date, String>();
+		emp.put(new Date(1,2,1985), "abc");
+		emp.put(new Date(3,4,1995), "pqr");
+		emp.put(new Date(1,12,1998), "fge");
+		emp.put(new Date(13,7,1983), "asd");
+	}
+}

@@ -1,0 +1,19 @@
+package corejava.collections.prove;
+
+import java.util.HashSet;
+
+public class TestClass {
+
+	public static void testHashSet(){
+		HashSet<String> s=new HashSet<String>();
+		s.add("abc");
+		s.add("pqr");
+		s.add("wrt");
+		s.add("sdf");
+		s.add("abc");
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

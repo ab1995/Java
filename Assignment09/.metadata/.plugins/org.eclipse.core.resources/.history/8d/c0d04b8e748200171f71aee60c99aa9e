@@ -1,0 +1,10 @@
+package corejava.collections.parking;
+
+public class ParkedCarOwnerDetails {
+
+	private String owerName;
+	private String carModel;
+	private String carNO;
+	private long owerMobileNo;
+	private String owerAddress
+}

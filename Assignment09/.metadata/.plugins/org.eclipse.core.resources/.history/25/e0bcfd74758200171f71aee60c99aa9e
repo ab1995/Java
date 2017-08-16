@@ -1,0 +1,5 @@
+package corejava.collections.parking;
+
+public class ParkedCarLocation {
+
+}

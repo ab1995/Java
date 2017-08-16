@@ -1,0 +1,42 @@
+package corejava.collections.chat;
+
+import java.util.Scanner;
+
+public class ChatApplication {
+
+	public static void main(String[] args) {
+		
+		int choice;
+		Scanner sc=new Scanner(System.in);
+		
+		do{
+			System.out.println("\n 1) Create a Chatroom \n 2) Add the User \n 3) User Login \n 4)Send a Message \n"
+					+ " 5) Display the Messages from a specific Chatroom \n "
+					+ "6) List down all users belonging to the specified Chatroom"
+					+ " \n 7) Logout \n 8) Delete an User \n 9) Exit \n\n Enter your Choice: ");
+			choice=sc.nextInt();
+			
+			switch(choice){
+			case 1: 
+					break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9: break;
+			default: System.out.println("\n Please Enter correct choice.");
+			}
+		}while(choice!=9);
+	}
+
+}

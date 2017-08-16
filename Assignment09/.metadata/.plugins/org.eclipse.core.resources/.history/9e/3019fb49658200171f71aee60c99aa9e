@@ -1,0 +1,81 @@
+package corejava.collections.chat;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class User{
+	private String userId;
+	private String password;
+	
+	public User(String userId, String password){
+		this.userId=userId;
+		this.password=password;
+	}
+}
+public class ChatApplication {
+
+	ArrayList<User> users
+	
+	public static void addUser(){
+		
+	}
+	
+	public static void userLogin(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\n\t Enter UserId: ");
+		String userId=sc.nextLine();
+		System.out.println("\n\t Enter Password: ");
+		String password=sc.nextLine();
+		User temp=new User(userId, password);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		users=new ArrayList<>();
+		User u1=new User("a1", "a1");
+		User u2=new User("a2", "a2");
+		User u3=new User("a3", "a3");
+		User u4=new User("a4", "a4");
+		User u5=new User("a5", "a5");
+		
+		users.add(u1);
+		users.add(u2);
+		users.add(u3);
+		users.add(u4);
+		users.add(u5);
+		
+		int choice;
+		Scanner sc=new Scanner(System.in);
+		
+		do{
+			System.out.println("\n 1) Create a Chatroom \n 2) Add the User \n 3) User Login \n 4) Send a Message \n"
+					+ " 5) Display the Messages from a specific Chatroom \n "
+					+ "6) List down all users belonging to the specified Chatroom"
+					+ " \n 7) Logout \n 8) Delete an User \n 9) Exit \n\n Enter your Choice: ");
+			choice=sc.nextInt();
+			
+			switch(choice){
+			case 1: 
+					break;
+			case 2:
+				break;
+			case 3: userLogin();
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9: break;
+			default: System.out.println("\n Please Enter correct choice.");
+			}
+		}while(choice!=9);
+	}
+
+}

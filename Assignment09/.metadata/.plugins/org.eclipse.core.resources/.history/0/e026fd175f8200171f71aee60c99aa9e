@@ -1,0 +1,12 @@
+package corejava.collections.chat;
+
+public class ChatApplication {
+
+	public static void main(String[] args) {
+		
+		do{
+			System.out.println("\n 1) Create a chatroom \n 2) Add the user \n 3) User login \n 4)Send a message \n 5) \n 6) \n 7)");
+		}while(true);
+	}
+
+}

@@ -1,0 +1,15 @@
+package corejava.collections.prove;
+
+import java.util.HashSet;
+
+public class TestClass {
+
+	public static void testHashSet(){
+		Set<String> s=new HashSet<String>();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}

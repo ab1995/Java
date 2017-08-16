@@ -1,0 +1,42 @@
+package corejava.collections.parking;
+
+public class ParkedCarOwnerDetails {
+
+	private String owerName;
+	private String carModel;
+	private String carNO;
+	private long owerMobileNo;
+	private String owerAddress;
+	
+	public String getOwerName() {
+		return owerName;
+	}
+	public void setOwerName(String owerName) {
+		this.owerName = owerName;
+	}
+	public String getCarModel() {
+		return carModel;
+	}
+	public void setCarModel(String carModel) {
+		this.carModel = carModel;
+	}
+	public String getCarNO() {
+		return carNO;
+	}
+	public void setCarNO(String carNO) {
+		this.carNO = carNO;
+	}
+	public long getOwerMobileNo() {
+		return owerMobileNo;
+	}
+	public void setOwerMobileNo(long owerMobileNo) {
+		this.owerMobileNo = owerMobileNo;
+	}
+	public String getOwerAddress() {
+		return owerAddress;
+	}
+	public void setOwerAddress(String owerAddress) {
+		this.owerAddress = owerAddress;
+	}
+	
+}

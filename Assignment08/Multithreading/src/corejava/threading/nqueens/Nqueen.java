@@ -2,32 +2,81 @@ package corejava.threading.nqueens;
 
 import java.util.concurrent.*;
 
-
-class Dimension{
-	private int x1, x2, y1, y2;
+class SafePosition implements Callable<Boolean>{
 	
-	public Dimension(int y1, int y2, int x1, int x2) {
+	int y1, y2, x1, x2;
+	
+	public SafePosition(int y1, int y2, int x1, int x2) {
 		this.y1=y1;
 		this.y2=y2;
 		this.x1=x1;
 		this.x2=x2;
 	}
+
+	@Override
+	public Boolean call() throws Exception {
+		if(this.y1 != this.y2 && this.x1 != this.x2) {
+			double slope = ((this.y2 - this.y1)*1.0) / (this.x2 - this.x1);
+			if (slope != 1.0 && slope != -1.0) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+class forLoops implements Runnable{
+
+	int a;
+	ExecutorService executor = Executors.newCachedThreadPool();
 	
-	public int gety1(){
-		return this.y1;
+	public forLoops(int a) {
+		this.a=a;
 	}
 	
-	public int getY2(){
-		return this.y2;
+	@Override
+	public void run(){
+
+		int a2 = 0, b2 = 1, c2 = 2, d2 = 3, e2 = 4, f2 = 5, g2 = 6, h2 = 7;
+    		
+		for(int b=0; b<=7; b++) {
+			for(int c=0; c<=7; c++) {
+				for(int d=0; d<=7; d++) {
+					for(int e=0; e<=7; e++) {
+						for(int f=0; f<=7; f++) {
+							for(int g=0; g<=7; g++) {
+								for(int h=0; h<=7; h++) {
+
+									
+									//this.executor.submit(new SafePosition(a, b, a2, b2)).get() 
+									if(Nqueen.isSafePosition(a, b, a2, b2) && Nqueen.isSafePosition(a, c, a2, c2) && Nqueen.isSafePosition(a, d, a2, d2) && Nqueen.isSafePosition(a, e, a2, e2) && Nqueen.isSafePosition(a, f, a2, f2) && Nqueen.isSafePosition(a, g, a2, g2) && Nqueen.isSafePosition(a, h, a2, h2)) {
+										
+										if(Nqueen.isSafePosition(b, c, b2, c2) && Nqueen.isSafePosition(b, d, b2, d2) && Nqueen.isSafePosition(b, e, b2, e2) && Nqueen.isSafePosition(b, f, b2, f2) && Nqueen.isSafePosition(b, g, b2, g2) && Nqueen.isSafePosition(b, h, b2, h2)) {
+											if(Nqueen.isSafePosition(c, d, c2, d2) && Nqueen.isSafePosition(c, e, c2, e2) && Nqueen.isSafePosition(c, f, c2, f2) && Nqueen.isSafePosition(c, g, c2, g2) && Nqueen.isSafePosition(c, h, c2, h2)) {	
+												if(Nqueen.isSafePosition(d, e, d2, e2) && Nqueen.isSafePosition(d, f, d2, f2) && Nqueen.isSafePosition(d, g, d2, g2) && Nqueen.isSafePosition(d, h, d2, h2)) {
+													if(Nqueen.isSafePosition(e, f, e2, f2) && Nqueen.isSafePosition(e, g, e2, g2) && Nqueen.isSafePosition(e, h, e2, h2)) { 
+														if(Nqueen.isSafePosition(f, g, f2, g2) && Nqueen.isSafePosition(f, h, f2, h2)) {
+															if(Nqueen.isSafePosition(g, h, g2, h2)) {
+											
+										System.out.println("Position " + Nqueen.i + ") " + a + " - " + b + " - " + c + " - " + d + " - " + e + " - " + f + " - " + g + " - " + h);
+										Nqueen.i++;
+									}
+									}
+									}										
+									}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}		        			        	
+    	
 	}
 	
-	public int getX1(){
-		return this.x1;
-	}
-	
-	public int getX2(){
-		return this.x2;
-	}
 }
 
 
@@ -47,69 +96,22 @@ public class Nqueen {
 
 	
 	public static void main(String[] args) {
-		
-		
-		int a2 = 0, b2 = 1, c2 = 2, d2 = 3, e2 = 4, f2 = 5, g2 = 6, h2 = 7;
-		
-		
-		
-		Future<Long> future = null ; 
-		ExecutorService executor = Executors.newFixedThreadPool(1);
-		for(a=0; a<=7; a++) {
-			
-			future = executor.submit(new Callable<Long>() {
-		        public Long call(){
-		        	long startTime = System.currentTimeMillis();
-		        	
-		        	
-					for(int b=0; b<=7; b++) {
-						for(int c=0; c<=7; c++) {
-							for(int d=0; d<=7; d++) {
-								for(int e=0; e<=7; e++) {
-									for(int f=0; f<=7; f++) {
-										for(int g=0; g<=7; g++) {
-											for(int h=0; h<=7; h++) {
 
-												if(isSafePosition(a, b, a2, b2) && isSafePosition(a, c, a2, c2) && isSafePosition(a, d, a2, d2) && isSafePosition(a, e, a2, e2) && isSafePosition(a, f, a2, f2) && isSafePosition(a, g, a2, g2) && isSafePosition(a, h, a2, h2)) {
-													
-													if(isSafePosition(b, c, b2, c2) && isSafePosition(b, d, b2, d2) && isSafePosition(b, e, b2, e2) && isSafePosition(b, f, b2, f2) && isSafePosition(b, g, b2, g2) && isSafePosition(b, h, b2, h2)) {
-														if(isSafePosition(c, d, c2, d2) && isSafePosition(c, e, c2, e2) && isSafePosition(c, f, c2, f2) && isSafePosition(c, g, c2, g2) && isSafePosition(c, h, c2, h2)) {	
-															if(isSafePosition(d, e, d2, e2) && isSafePosition(d, f, d2, f2) && isSafePosition(d, g, d2, g2) && isSafePosition(d, h, d2, h2)) {
-																if(isSafePosition(e, f, e2, f2) && isSafePosition(e, g, e2, g2) && isSafePosition(e, h, e2, h2)) { 
-																	if(isSafePosition(f, g, f2, g2) && isSafePosition(f, h, f2, h2)) {
-																		if(isSafePosition(g, h, g2, h2)) {
-														
-													System.out.println("Position " + i + ") " + a + " - " + b + " - " + c + " - " + d + " - " + e + " - " + f + " - " + g + " - " + h);
-													i++;
-												}
-												}
-												}										
-												}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}		        			        	
-		        	
-		        	
-		        	
-		        	long endTime = System.currentTimeMillis();
-		        	return endTime-startTime;
-		        	}
-		    });
+		//Future<Long> future = null ; 
+		ExecutorService executor = Executors.newFixedThreadPool(8);
+		long startTime = System.currentTimeMillis();
+		for(a=0; a<=7; a++) {		
+			executor.execute(new forLoops(a));
 		}
-
 		
+		executor.shutdown();
+        while (!executor.isTerminated()) {
+        }
+        long endTime = System.currentTimeMillis();
+    	 
+        System.out.println("Time Taken: "+ (endTime-startTime));
 		
-	
-		
-		
-		try {
+/*		try {
 			System.out.println("Time taken: " + future.get());
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -117,8 +119,26 @@ public class Nqueen {
 		} catch (ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
+	
+    public static CompletableFuture<Integer> createCompletableFuture() {
+        CompletableFuture<Integer>  result = CompletableFuture.supplyAsync(() -> {
+            try {
+                // simulate long running task
+                Thread.sleep(5000);
+            } catch (InterruptedException e) { }
+            return 20;
+        });
+        return result;
+    }
 
 
 }
+
+
+
+
+
+
+

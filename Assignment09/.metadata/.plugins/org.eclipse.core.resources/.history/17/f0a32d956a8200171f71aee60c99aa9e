@@ -1,0 +1,132 @@
+package corejava.collections.chat;
+
+import java.util.*;
+
+class User{
+	private String userId;
+	private String password;
+	
+	public User(String userId, String password){
+		this.userId=userId;
+		this.password=password;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		User user=(User)obj;
+		if(this.userId.equals(user.userId) && this.password.equals(userId.equals(user.password)))
+			return true;
+		else
+			return false;
+	}
+	
+}
+
+public class ChatApplication {
+
+	static HashMap<String, String>  users=new HashMap<>();;
+	static HashMap<String, Set<String>> chatRooms=new HashMap<>();
+	static String currUser;
+	
+	public ChatApplication() {
+
+	}
+	
+	public static void createChatRoom(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\n Enter ChatRoom Name: ");
+		String cr=sc.nextLine();
+		Set<String> set = new HashSet();
+		set.add(currUser);
+		chatRooms.put(cr, set);
+	}
+	
+	public static void addUser(){
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Available ChatRooms: ");
+		for(Map.Entry m:chatRooms.entrySet()){  
+			System.out.println(m.getKey());  
+		}
+		
+		System.out.println("\n Enter UserID: ");
+		String userId=sc.nextLine();
+		
+		if(users.containsKey(userId)){
+	
+			System.out.println("Enter Chatroom Name: ");
+			String cr=sc.nextLine();
+			
+			if(chatRooms.containsKey(cr)){
+				Set<String> set = chatRooms.get(cr); 
+				set.add(userId);
+			}
+			else{
+				System.out.println("Invalid Input!");
+			}
+		}
+		else{
+			System.out.println("Invalid UserId!");
+		}
+	}
+	
+	public static void userLogin(){
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\n Enter UserId: ");
+		String userId=sc.nextLine();
+		System.out.println("\n Enter Password: ");
+		String password=sc.nextLine();
+		
+		if(users.containsKey(userId)){
+			if(users.get(userId).equals(password))
+				System.out.println("Login Successful!");
+			else
+				System.out.println("Login Unsuccessful!");
+		}
+		else{
+			System.out.println("Login Unsuccessful!");
+		}
+	}
+	
+	public static void main(String[] args) {
+
+		users.put("a1", "a1");
+		users.put("a2", "a2");
+		users.put("a3", "a3");
+		users.put("a4", "a4");
+		users.put("a5", "a5");
+		
+		int choice;
+		Scanner sc=new Scanner(System.in);
+		
+		do{
+			System.out.println("\n 1) Create a Chatroom \n 2) Add the User \n 3) User Login \n 4) Send a Message \n"
+					+ " 5) Display the Messages from a specific Chatroom \n "
+					+ "6) List down all users belonging to the specified Chatroom"
+					+ " \n 7) Logout \n 8) Delete an User \n 9) Exit \n\n Enter your Choice: ");
+			choice=sc.nextInt();
+			
+			switch(choice){
+			case 1: createChatRoom();
+					break;
+			case 2: addUser();
+				break;
+			case 3: userLogin();
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9: break;
+			default: System.out.println("\n Please Enter correct choice.");
+			}
+		}while(choice!=9);
+	}
+
+}

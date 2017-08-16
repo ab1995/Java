@@ -1,0 +1,18 @@
+package corejava.collections.parking;
+
+public class ParkedCarOwenerList {
+
+	
+	public void addNewCar(ParkedCarOwnerDetails obj){
+		
+	}
+	
+	public void removeCar(){
+		
+	}
+	
+	public int getParkedCarLocation(int token){
+		
+		return 1;
+	}
+}

@@ -1,0 +1,48 @@
+package corejava.collections.employee;
+
+import java.util.HashMap;
+
+class Date{
+	private int day;
+	private int month;
+	private int year;
+	
+	public Date(int day, int month, int year){
+		 this.day=day;
+		 this.month=month;
+		 this.year=year;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Date d=(Date)obj;
+		if(this.day==d.day){
+			if(this.month==d.month){
+				return true;
+			}
+				
+			else
+				return false;
+		}
+		else
+			return false;
+		
+	}
+}
+
+public class Employee {
+
+	public static void main(String[] args) {
+		HashMap<Date, String> emp=new HashMap<Date, String>();
+		Date d1=new Date(1,2,1985);
+		Date d2=new Date(1,2,1995);
+		Date d3=new Date(1,12,1998);
+		Date d4=new Date(13,7,1983);
+		emp.put(d1, "abc");
+		emp.put(d2, "pqr");
+		emp.put(d3, "fge");
+		emp.put(d4, "asd");
+
+		System.err.println(emp.get(d2));
+	}
+}

@@ -1,0 +1,39 @@
+package corejava.collections.person;
+
+public class Person implements Comparable<Person> {
+
+	private double weight;
+	private double height;
+	private String name;
+	
+	public Person(double weight, double height, String name){
+		this.weight=weight;
+		this.height=height;
+		this.name=name;
+	}
+	
+	@Override
+	public int compareTo(Person o) {
+		if(this.weight!=o.weight){
+			if(this.weight>o.weight)
+				return 1;
+			else if(this.weight==o.weight)
+				return 0;
+			else
+				return -1;
+		}else{
+			if(this.height>o.height)
+				return 1;
+			else if(this.height==o.height)
+				return 0;
+			else
+				return -1;
+		}
+	}
+	
+	public static void main(String args[]){
+		
+	}
+
+
+}
