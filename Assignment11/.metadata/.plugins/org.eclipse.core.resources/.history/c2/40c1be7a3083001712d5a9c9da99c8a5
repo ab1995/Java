@@ -1,0 +1,7 @@
+package corejava.java8.airthmetic;
+
+public class TestClass {
+	public static void main(String[] args) {
+		MathematicalOperation addition=(a ,b )-> a+b;
+	}
+}

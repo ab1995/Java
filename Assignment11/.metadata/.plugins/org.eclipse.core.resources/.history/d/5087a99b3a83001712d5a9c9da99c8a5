@@ -1,0 +1,19 @@
+package corejava.java8.test;
+
+import java.util.*;
+import java.util.function.*;
+
+
+public class TestClass {
+
+	public static void main(String[] args) {
+
+		Consumer<Integer> consumer = (Integer x)->System.out.println(x);
+		
+		ArrayList<Integer> list=new ArrayList<>();
+		
+		
+		printList(list, consumer); 
+	}
+
+}

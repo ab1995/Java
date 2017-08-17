@@ -1,0 +1,58 @@
+package corejava.collections.parking;
+
+import java.util.*;
+
+public class ParkedCarOwenerList {
+
+	static HashMap<Integer, HashMap<Integer, HashSet<ParkedCarOwnerDetails>>> location=new HashMap<>();
+	static HashMap<String, ParkedCarOwnerDetails> tokenMap=new HashMap<>();
+
+	
+	public ParkedCarOwenerList(){
+		HashSet<ParkedCarOwnerDetails> temp=new HashSet<>(20);		
+				
+		for(int i=0;i<3;i++)
+		{
+			HashMap<Integer, HashSet<ParkedCarOwnerDetails>> floorMap=new HashMap<>();
+			for(int j=0;j<4;j++){
+				floorMap.put(j,temp);
+			}
+			location.put(i,floorMap);
+		}
+		
+		
+		
+		System.out.println(location.size());
+	}
+	
+	public String addNewCar(ParkedCarOwnerDetails obj){
+		
+		
+		for(int i=0;i<location.size();i++)
+		{
+			HashMap sectionMap=location.get(i);
+			
+			for(int j=0;j<sectionMap.size();j++){
+				HashSet carSet=(HashSet)sectionMap.get(j+1);
+				if(carSet.size()<20){
+					carSet.add(obj);
+					String token="F"+(i+1)+"S"+(j+1)+"_"+carSet.size();
+					tokenMap.put(token,obj);
+					return token;
+				}
+			}
+			System.err.println("i="+i);
+			i++;
+		}
+		return null;
+	}
+	
+	public void removeCar(){
+		
+	}
+	
+	public int getParkedCarLocation(String token){
+		System.out.println("Floor: "+token.charAt(1)+" Section: "+token.charAt(3)+" Slot: "+token.split("_")[1]);
+		return 1; 
+	}
+}

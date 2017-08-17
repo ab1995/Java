@@ -1,0 +1,15 @@
+package corejava.java8.test;
+
+import java.util.*;
+import java.util.function.*;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+
+		Consumer<Integer> consumer = (Integer x)->System.out.println(x);
+		
+		printList(Arrays.asList(10, 15, 20, 44, 85), consumer); 
+	}
+
+}

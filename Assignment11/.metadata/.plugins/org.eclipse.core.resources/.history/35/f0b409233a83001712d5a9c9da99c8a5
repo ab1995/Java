@@ -1,0 +1,11 @@
+package corejava.java8.test;
+
+import java.util.function.*;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+
+	}
+
+}

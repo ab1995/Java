@@ -1,0 +1,37 @@
+package corejava.java8.test;
+
+import java.util.*;
+import java.util.function.*;
+
+
+
+public class TestClass {
+
+	private static void printList(ArrayList<Integer> list, Consumer<Integer> consumer) {
+		for(Integer o:list){
+			consumer.accept(o);
+		}
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+
+		Consumer<Integer> consumer = (Integer x)->System.out.println(x);
+		Supplier<Integer> supplier = () -> new Random().nextInt(100); 
+		
+		ArrayList<Integer> list=new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		//printList(list, consumer);
+		
+		for(int i=0;i<10;i++){
+			System.out.println(supplier.get());
+		}
+	}
+
+
+
+}

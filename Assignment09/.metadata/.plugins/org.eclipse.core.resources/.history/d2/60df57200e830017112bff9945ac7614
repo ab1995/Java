@@ -1,0 +1,23 @@
+package corejava.collections.failsafe;
+
+import java.util.HashMap;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+	public static void testHashMap(){
+		HashMap<String, String> hm=new HashMap<>();
+		hm.put("abs", "abs");
+		hm.put("abd", "abd");
+		hm.put("pq", "pqr");
+		
+		for(Map.Entry m:hm.entrySet()){  
+			System.out.println(m.getKey()+" "+m.getValue());  
+		}
+		
+	}
+}

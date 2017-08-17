@@ -1,0 +1,9 @@
+package corejava.java8.test;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+
+	}
+
+}

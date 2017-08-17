@@ -1,0 +1,93 @@
+package corejava.collections.failsafe;
+
+import java.util.*;
+import java.util.concurrent.*;
+
+public class TestClass {
+	static CopyOnWriteArrayList<String> list =new CopyOnWriteArrayList<>();
+	public static void main(String[] args) {
+		//testHashMap();
+		//concurrentHashMap();
+		//concurrentList();
+		
+		Runnable r1=new Runnable() {
+			@Override
+			public void run() {
+				for(int i=0;i<100;i++){
+					list.add("demo"+i);
+					//try {Thread.sleep(10);} catch (InterruptedException e) {}
+				}
+				
+			}
+		};
+		
+		Runnable r2=new Runnable() {
+			@Override
+			public void run() {
+				for(int i=0;i<100;i++){
+					list.remove(0);
+					try {Thread.sleep(20);} catch (InterruptedException e) {}
+				}
+				
+			}
+		};
+		
+		Thread t1=new Thread(r1);
+		Thread t2=new Thread(r2);
+		t1.start();
+		t2.start();
+		
+		
+	}
+
+	public static void testHashMap(){
+		HashMap<String, String> hm=new HashMap<>();
+		hm.put("abs", "abs");
+		hm.put("abd", "abd");
+		hm.put("pq", "pqr");
+		
+		for(Map.Entry m:hm.entrySet()){  
+			System.out.println(m.getKey()+" "+m.getValue()); 
+			hm.put("demo", "demo");
+		}
+	}
+	
+	public static void concurrentHashMap(){
+		ConcurrentHashMap<String, String> hm=new ConcurrentHashMap<>();
+		hm.put("abs", "abs");
+		hm.put("abd", "abd");
+		hm.put("pq", "pqr");
+		
+        Iterator iterator = hm.keySet().iterator();
+        boolean flag=true;
+        while (iterator.hasNext())
+        {
+            if(flag){
+            	hm.put("ab", "ab");
+            	flag=false;
+            }
+            System.out.println(hm.get(iterator.next()));
+
+        }
+	}
+	
+	public static void concurrentList(){
+		
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		list.add("d");
+		
+		Iterator itr=list.iterator();
+		boolean flag=true;
+		while(itr.hasNext()){
+            if(flag){
+            	list.add("demo");
+            	//itr=list.iterator();
+            	flag=false;
+            }
+           
+			System.out.println(itr.next());
+		}
+	}
+}

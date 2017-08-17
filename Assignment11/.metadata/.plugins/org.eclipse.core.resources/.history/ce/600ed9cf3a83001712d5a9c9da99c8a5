@@ -1,0 +1,27 @@
+package corejava.java8.test;
+
+import java.util.*;
+import java.util.function.*;
+
+import corejava.java8.order.Order;
+
+
+public class TestClass {
+
+	private static void printList(ArrayList<Integer> list, Consumer<Integer> consumer) {
+		for(Integer o:list){
+			consumer.accept(o);
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+
+		Consumer<Integer> consumer = (Integer x)->System.out.println(x);
+		ArrayList<Integer> list=new ArrayList<>();
+		printList(list, consumer); 
+	}
+
+
+
+}

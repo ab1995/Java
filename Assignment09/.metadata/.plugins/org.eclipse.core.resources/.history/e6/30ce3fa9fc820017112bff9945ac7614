@@ -1,0 +1,23 @@
+package corejava.collections.parking;
+
+public class TestParking {
+
+	public static void main(String[] args) {
+
+		ParkedCarOwenerList parking=new ParkedCarOwenerList();
+		String token;
+		ParkedCarOwnerDetails[] cars=new ParkedCarOwnerDetails[30];
+//		for(int i=0;i<30;i++){
+//			cars[i]=new ParkedCarOwnerDetails("abc"+i, "i0"+i, "MH1290"+i, 9233232, "Pune");
+//			token=parking.addNewCar(cars[i]);
+//			if(token==null)
+//				System.out.println("No slot Available.");
+//			else
+//				parking.getParkedCarLocation(token);
+//		}
+
+		
+	}
+
+}
+

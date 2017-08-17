@@ -1,0 +1,80 @@
+package corejava.collections.parking;
+
+import java.util.*;
+
+public class ParkedCarOwenerList {
+
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, ParkedCarOwnerDetails>>> location=new HashMap<>();
+	static HashMap<String, ParkedCarOwnerDetails> tokenMap=new HashMap<>();
+
+	
+	public ParkedCarOwenerList(){
+				
+		for(int i=0;i<3;i++)
+		{
+			HashMap<Integer, HashMap<Integer, ParkedCarOwnerDetails>> floorMap=new HashMap<>();
+			for(int j=0;j<4;j++){
+				HashMap<Integer, ParkedCarOwnerDetails> sectionMap=new HashMap<>(20);
+				for(int k=0;k<20;k++){
+					sectionMap.put(k, null);
+				}
+				floorMap.put(j,sectionMap);
+			}
+			location.put(i,floorMap);
+		}
+		
+		
+		
+		System.out.println(location.size());
+	}
+	
+	public String addNewCar(ParkedCarOwnerDetails obj){
+		
+		
+		for(int i=0;i<location.size();i++)
+		{
+			for(int j=0;j<location.get(i).size();j++){
+				for(int k=0;k<location.get(i).get(j).size();k++){
+					if(location.get(i).get(j).get(k)==null){
+						location.get(i).get(j).put(k, obj);
+						String token="F"+(i+1)+"S"+(j+1)+"_"+(k+1);
+						tokenMap.put(token,obj);
+						return token;
+					}
+				}
+
+			}
+		}
+		return null;
+	}
+	
+	public void removeCar(String token){
+		if(tokenMap.containsKey(token)){
+			ParkedCarOwnerDetails obj=tokenMap.get(token);
+			int floor=(int)token.charAt(1);
+			int section=(int)token.charAt(3);
+			int slot=Integer.parseInt(token.split("_")[1]);
+			
+			location.get(floor).get(section).put(slot, null);
+			for(int i=0;i<location.size();i++)
+			{
+				for(int j=0;j<location.get(i).size();j++){
+					for(int k=0;k<location.get(i).get(j).size();k++){
+						if(location.get(i).get(j).get(k)==obj){
+							location.get(i).get(j).put(k, obj);
+						}
+					}
+
+				}
+			}
+		}
+		else{
+			System.out.println("Token Invalid!");
+		}
+	}
+	
+	public int getParkedCarLocation(String token){
+		System.out.println("Floor: "+token.charAt(1)+" Section: "+token.charAt(3)+" Slot: "+token.split("_")[1]);
+		return 1; 
+	}
+}

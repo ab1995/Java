@@ -1,0 +1,15 @@
+package corejava.java8.order;
+
+class Order{
+	private int price;
+	private String status;
+	
+	public Order(int price, String status){
+		this.price=price;
+		this.status=status;
+	}
+}
+
+public class TestClass {
+
+}

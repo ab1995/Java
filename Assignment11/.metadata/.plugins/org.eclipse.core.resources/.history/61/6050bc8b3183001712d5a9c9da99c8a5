@@ -1,0 +1,10 @@
+package corejava.java8.order;
+
+class Order{
+	private int price;
+	private enum status{ACCEPTED, COMPLETED};
+}
+
+public class TestClass {
+
+}

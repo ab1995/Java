@@ -1,0 +1,12 @@
+package corejava.java8.string;
+
+import java.util.*;
+
+public class TestClass {
+	public static void main(String[] args) {
+		ArrayList<String> list=new ArrayList<>();
+		list.add("adfsdf");
+		list.add("dftr");
+		list.add("derr");
+	}
+}

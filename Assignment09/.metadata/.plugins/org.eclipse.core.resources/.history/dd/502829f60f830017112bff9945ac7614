@@ -1,0 +1,63 @@
+package corejava.collections.failsafe;
+
+import java.util.*;
+import java.util.concurrent.*;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+		//testHashMap();
+		//concurrentHashMap();
+		concurrentList();
+	}
+
+	public static void testHashMap(){
+		HashMap<String, String> hm=new HashMap<>();
+		hm.put("abs", "abs");
+		hm.put("abd", "abd");
+		hm.put("pq", "pqr");
+		
+		for(Map.Entry m:hm.entrySet()){  
+			System.out.println(m.getKey()+" "+m.getValue()); 
+			hm.put("demo", "demo");
+		}
+	}
+	
+	public static void concurrentHashMap(){
+		ConcurrentHashMap<String, String> hm=new ConcurrentHashMap<>();
+		hm.put("abs", "abs");
+		hm.put("abd", "abd");
+		hm.put("pq", "pqr");
+		
+        Iterator iterator = hm.keySet().iterator();
+        boolean flag=true;
+        while (iterator.hasNext())
+        {
+            if(flag){
+            	hm.put("ab", "ab");
+            	flag=false;
+            }
+            System.out.println(hm.get(iterator.next()));
+
+        }
+	}
+	
+	public static void concurrentList(){
+		CopyOnWriteArrayList<String> list =new CopyOnWriteArrayList<>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		list.add("d");
+		
+		Iterator itr=list.iterator();
+		boolean flag=true;
+		while(itr.hasNext()){
+            if(flag){
+            	list.add("demo");
+            	
+            	flag=false;
+            }
+			System.out.println(itr.next());
+		}
+	}
+}
