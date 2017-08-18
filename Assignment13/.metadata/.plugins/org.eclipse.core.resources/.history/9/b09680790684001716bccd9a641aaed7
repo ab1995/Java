@@ -1,0 +1,11 @@
+package corejava.filehandling.file;
+
+import java.io.FileInputStream;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+		File file1=new File("input.txt");
+		FileInputStream fis=new FileInputStream(file);
+	}
+}
